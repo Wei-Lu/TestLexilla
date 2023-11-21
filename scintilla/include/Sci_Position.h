@@ -21,7 +21,8 @@ typedef size_t Sci_PositionU;
 typedef long Sci_PositionCR;
 
 #ifdef _WIN32
-	#define SCI_METHOD __stdcall
+//	#define SCI_METHOD __stdcall
+  #define SCI_METHOD __cdecl
 #else
 	#define SCI_METHOD
 #endif

@@ -168,6 +168,12 @@ bool Lexilla::Load(std::string_view sharedLibraryPaths) {
 					fnLexerName(i, name, sizeof(name));
 					lexers.push_back(name);
 				}
+				printf("dll loaded\n");
+			}
+			else
+			{
+				DWORD error = GetLastError();
+				printf("error=%d\n", error);
 			}
 			CreateLexerFn fnCL = FunctionPointer<CreateLexerFn>(
 				FindSymbol(lexillaDL, LEXILLA_CREATELEXER));
@@ -217,7 +223,6 @@ bool Lexilla::Load(std::string_view sharedLibraryPaths) {
 	}
 	// Standard Lexilla does not have any properties so can't be added to set.
 	libraryProperties = std::vector<std::string>(nameSet.begin(), nameSet.end());
-
 	return !libraries.empty();
 }
 

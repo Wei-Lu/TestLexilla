@@ -1175,7 +1175,7 @@ void SciTEWin::Find() {
 // Set a call back with the handle after init to set the path.
 // http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc/platform/shell/reference/callbackfunctions/browsecallbackproc.asp
 
-static int __stdcall BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM, LPARAM pData) {
+static int /*__stdcall*/ LEXILLA_CALL BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM, LPARAM pData) {
 	if (uMsg == BFFM_INITIALIZED) {
 		SendMessage(hwnd, BFFM_SETSELECTION, TRUE, pData);
 	}
@@ -1317,7 +1317,7 @@ BOOL SciTEWin::GrepMessage(HWND hDlg, UINT message, WPARAM wParam) {
 				GUI::gui_string title = localiser.Text("Select a folder to search from");
 				info.lpszTitle = title.c_str();
 				info.ulFlags = 0;
-				info.lpfn = BrowseCallbackProc;
+				info.lpfn = (BFFCALLBACK)BrowseCallbackProc;
 				GUI::gui_string directory = dlg.ItemTextG(IDDIRECTORY);
 				if (!EndsWith(directory, pathSepString)) {
 					directory += pathSepString;

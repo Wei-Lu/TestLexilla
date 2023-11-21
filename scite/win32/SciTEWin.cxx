@@ -2352,7 +2352,8 @@ static void RestrictDLLPath() noexcept {
 }
 
 #ifdef STATIC_BUILD
-extern "C" Scintilla::ILexer5 * __stdcall CreateLexer(const char *name);
+//extern "C" Scintilla::ILexer5 * __stdcall CreateLexer(const char *name);
+extern "C" Scintilla::ILexer5 * LEXILLA_CALL CreateLexer(const char *name);
 #endif
 
 #if defined(_MSC_VER) && defined(_PREFAST_)

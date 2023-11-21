@@ -81,7 +81,8 @@ public:
 
 #if defined(_WIN32)
 #define EXPORT_FUNCTION __declspec(dllexport)
-#define CALLING_CONVENTION __stdcall
+#define CALLING_CONVENTION __cdecl
+//#define CALLING_CONVENTION __stdcall
 #else
 #define EXPORT_FUNCTION __attribute__((visibility("default")))
 #define CALLING_CONVENTION
