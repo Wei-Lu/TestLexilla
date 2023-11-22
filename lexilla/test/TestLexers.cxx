@@ -942,6 +942,7 @@ bool AccessLexilla(std::filesystem::path basePath) {
 	if (!std::filesystem::exists(basePath)) {
 		std::cout << "No examples at " << basePath.string() << "\n";
 		return false;
+		return false;
 	}
 
 	bool success = true;
@@ -992,12 +993,22 @@ int main(int argc, char **argv) {
 	const std::filesystem::path baseDirectory = FindLexillaDirectory(std::filesystem::current_path());
 	if (!baseDirectory.empty()) {
 #if !defined(LEXILLA_STATIC)
-//		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / LEXILLA_LIB;
-		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / "SimpleLexer.dll";
-		if (!Lexilla::Load(sharedLibrary.string())) {
+		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / LEXILLA_LIB;
+		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\Lexilla.dll")) {
 			std::cout << "Failed to load " << sharedLibrary << "\n";
 			return 1;	// Indicate failure
 		}
+
+//		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / "AclLexer.dll";
+/*		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\AclLexer.dll")) {
+			std::cout << "Failed to load " << sharedLibrary << "\n";
+			return 1;	// Indicate failure
+		}
+		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\SimpleLexer.dll")) {
+			std::cout << "Failed to load " << sharedLibrary << "\n";
+			return 1;	// Indicate failure
+		}
+		*/
 #endif
 		std::filesystem::path examplesDirectory = baseDirectory / "test" / "examples";
 		for (int i = 1; i < argc; i++) {

@@ -14,6 +14,7 @@ namespace Lexilla {
  */
 class WordList {
 	// Each word contains at least one character - a empty word acts as sentinel at the end.
+public:
 	char **words;
 	char *list;
 	size_t len;
