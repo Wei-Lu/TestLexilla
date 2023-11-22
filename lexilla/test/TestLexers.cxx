@@ -992,7 +992,8 @@ int main(int argc, char **argv) {
 	const std::filesystem::path baseDirectory = FindLexillaDirectory(std::filesystem::current_path());
 	if (!baseDirectory.empty()) {
 #if !defined(LEXILLA_STATIC)
-		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / LEXILLA_LIB;
+//		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / LEXILLA_LIB;
+		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / "SimpleLexer.dll";
 		if (!Lexilla::Load(sharedLibrary.string())) {
 			std::cout << "Failed to load " << sharedLibrary << "\n";
 			return 1;	// Indicate failure
