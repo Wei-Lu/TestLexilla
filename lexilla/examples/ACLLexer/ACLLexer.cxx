@@ -45,6 +45,7 @@ style.simple.1=fore:#FF0000
 
 using namespace Scintilla;
 using namespace Lexilla;
+extern void ColouriseAclDoc(Sci_PositionU startPos, Sci_PositionU length, int initStyle, WordList* keywordlists[], Accessor& styler);
 
 class AclLexer : public LexerBase {
 public:
@@ -52,15 +53,24 @@ public:
     }
     void SCI_METHOD Lex(Sci_PositionU startPos, Sci_Position length, int initStyle, IDocument *pAccess) override 
     {
+      const char* const wordLists[] = { {"COMMENT SET DISPlAY"}, {"OFF ON"}, {"ABS ADD"}, {"ASCII NUMERIC UNICODE"}};
+      WordListSet(0, wordLists[0]);
+      WordListSet(1, wordLists[1]);
+      WordListSet(2, wordLists[2]);
+      WordListSet(3, wordLists[3]);
+
       try {
         Accessor astyler(pAccess, &props);
-	      if (length > 0) {
+        ColouriseAclDoc(startPos, length, initStyle, keyWordLists, astyler);
+
+/*	      if (length > 0) {
 		      astyler.StartAt(startPos);
 		      astyler.StartSegment(startPos);
 		      for (unsigned int k=0; k<length; k++) {
 			      astyler.ColourTo(startPos+k, (startPos+k)%2);
 		      }
       	}
+        */
         astyler.Flush();
       } catch (...) {
               // Should not throw into caller as may be compiled with different compiler or options

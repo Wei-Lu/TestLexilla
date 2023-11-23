@@ -228,7 +228,7 @@ bool isPrefixComment(char *textToMatch)
          (_strnicmp(textToMatch, "comment", tokenLen) == 0);
 }
 
-void ColouriseAclDoc(unsigned int startPos, int length, int initStyle, WordList *keywordlists[], Accessor &styler) 
+void ColouriseAclDoc(Sci_PositionU startPos, Sci_PositionU length, int initStyle, WordList *keywordlists[], Accessor &styler)
 {
 	WordList &commandKeywords   = *keywordlists[0];
 	WordList &parameterKeywords = *keywordlists[1];

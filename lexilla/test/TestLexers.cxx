@@ -994,16 +994,18 @@ int main(int argc, char **argv) {
 	if (!baseDirectory.empty()) {
 #if !defined(LEXILLA_STATIC)
 		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / LEXILLA_LIB;
-		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\Lexilla.dll")) {
+/*		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\Lexilla.dll")) {
 			std::cout << "Failed to load " << sharedLibrary << "\n";
 			return 1;	// Indicate failure
 		}
 
 //		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / "AclLexer.dll";
-/*		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\AclLexer.dll")) {
+*/
+		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\AclLexer.dll")) {
 			std::cout << "Failed to load " << sharedLibrary << "\n";
 			return 1;	// Indicate failure
 		}
+		/*
 		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\SimpleLexer.dll")) {
 			std::cout << "Failed to load " << sharedLibrary << "\n";
 			return 1;	// Indicate failure

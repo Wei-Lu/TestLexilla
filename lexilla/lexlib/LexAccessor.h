@@ -7,6 +7,7 @@
 
 #ifndef LEXACCESSOR_H
 #define LEXACCESSOR_H
+#include <string>
 
 namespace Lexilla {
 
