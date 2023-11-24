@@ -1001,7 +1001,7 @@ int main(int argc, char **argv) {
 
 //		const std::filesystem::path sharedLibrary = baseDirectory / "bin" / "AclLexer.dll";
 */
-		if (!Lexilla::Load("C:\\work\\otherSrc\\TestLexilla\\lexilla\\bin\\AclLexer.dll")) {
+		if (!Lexilla::Load("C:\\work\\OtherSrc\\TestLexilla\\lexilla\\examples\\ACLLexer\\Debug\\AclLexer.dll")) {
 			std::cout << "Failed to load " << sharedLibrary << "\n";
 			return 1;	// Indicate failure
 		}
